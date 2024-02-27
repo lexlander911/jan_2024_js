@@ -38,14 +38,12 @@
 
     for (let i = 0; i < products.length; i++) {
         let product = products[i];
-
         document.write('<div class="product-card">');
-        document.write('<h3 class="product-title">' + product.title.toUpperCase() + '. Price - ' + product.price + '</h3>');
+        document.write('<h3 class="product-title">' + product.title + '. Price - ' + product.price + '</h3>');
         document.write('<img src="' + product.image + '" alt="" class="product-image">');
         document.write('</div>');
     }
 
-    // Конец блока для карточек продуктов
     document.write('</div>');
 
 </script>
