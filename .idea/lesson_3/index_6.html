@@ -65,7 +65,7 @@
     for (let product of products) {
 
         document.write('<div class="product-card">');
-        document.write('<h3 class="product-title">' + 'Назава: ' + product.title + '</h3>');
+        document.write('<h3 class="product-title">' + 'Назава: ' + product.title.toUpperCase() + '</h3>');
         document.write('<img src="' + product.image + '" alt="" class="product-image">');
         document.write('<h3 class="product-price">' + 'Ціна: ' + product.price + ' грн.</h3>');
         document.write('</div>');
