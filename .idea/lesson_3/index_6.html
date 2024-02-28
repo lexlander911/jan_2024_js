@@ -6,6 +6,33 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .product-card {
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            width: 15%;
+            height: 50vh;
+            vertical-align: top;
+            box-sizing: border-box;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 80%;
+            object-fit: cover;
+        }
+        .product-title {
+            margin-bottom: 5px;
+        }
+         .product-price {
+            margin-top: 5px;
+        }
+
+    </style>
 </head>
 <body>
 <script>
@@ -33,17 +60,16 @@
         },
     ];
 
-
     document.write('<div class="products-container">');
 
-    for (let i = 0; i < products.length; i++) {
-        let product = products[i];
+    for (let product of products) {
+
         document.write('<div class="product-card">');
-        document.write('<h3 class="product-title">' + product.title + '. Price - ' + product.price + '</h3>');
+        document.write('<h3 class="product-title">' + 'Назава: ' + product.title + '</h3>');
         document.write('<img src="' + product.image + '" alt="" class="product-image">');
+        document.write('<h3 class="product-price">' + 'Ціна: ' + product.price + ' грн.</h3>');
         document.write('</div>');
     }
-
     document.write('</div>');
 
 </script>
