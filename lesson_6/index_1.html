@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    let string1 = 'hello world';
+    let string2 = 'lorem ipsum';
+    let string3 = 'javascript is cool';
+
+    //  - Знайти та вивести довижину настипних стрінгових значень
+    // 'hello world', 'lorem ipsum', 'javascript is cool'
+
+    console.log("Довжина рядка 1:", string1.length);
+    console.log("Довжина рядка 2:", string2.length);
+    console.log("Довжина рядка 3:", string3.length);
+
+    // - Перевести до великого регістру наступні стрінгові значення
+    // 'hello world', 'lorem ipsum', 'javascript is cool'
+
+    let uppercaseString1 = string1.toUpperCase();
+    let uppercaseString2 = string2.toUpperCase();
+    let uppercaseString3 = string3.toUpperCase();
+
+    console.log("Стрінг 1 великими літерами:", uppercaseString1);
+    console.log("Стрінг 2 великими літерами:", uppercaseString2);
+    console.log("Стрінг 3 великими літерами:", uppercaseString3);
+
+    // - Перевести до нижнього регістру настипні стрінгові значення
+    // 'HELLO WORLD', 'LOREM IPSUM', 'JAVASCRIPT IS COOL'
+
+    console.log("Стрінг 1 нижніми літерами:", uppercaseString1.toLowerCase());
+    console.log("Стрінг 2 нижніми літерами:", uppercaseString2.toLowerCase());
+    console.log("Стрінг 3 нижніми літерами:", uppercaseString3.toLowerCase());
+
+
+    // - Є "брудна" стрінга let str = ' dirty string   ' . Почистити її від зайвих пробілів.
+    let str = ' dirty string   ';
+    console.log("Очищена стрінга:", str.trim());
+
+
+    // - Напишіть функцію stringToarray(str), яка перетворює рядок на масив слів.
+    //     let str = 'Ревуть воли як ясла повні';
+    // let arr = stringToarray(str); ['Ревуть', 'воли', 'як', 'ясла', 'повні']
+
+        //Пример: 1
+        function stringToArray(str) {
+            let wordsArray = str.split(" ");
+            return wordsArray;
+        }
+
+        str = 'Ревуть воли як ясла повні';
+        let arrayOfWords = stringToArray(str);
+        console.log(arrayOfWords);
+
+
+        //Пример: 2
+        let ToArray = str => str.split(" ");
+        console.log(ToArray(str));
+
+
+    // - є масив чисел [10,8,-7,55,987,-1011,0,1050,0] . за допомоги map  перетворити всі об'єкти в масиві на стрінгові.
+    // - створити функцію sortNums(direction), яка прймає масив чисел, та сортує його від більшого до меньшого, або навпаки в залежності від значення аргументу direction.
+    //     let nums = [11,21,3];
+    // sortNums(nums,'ascending') // [3,11,21]
+    // sortNums(nums,'descending') // [21,11,3]
+
+
+    let numbers = [10, 8, -7, 55, 987, -1011, 0, 1050, 0];
+    let stringNumbers = numbers.map(num => num.toString());
+    console.log(stringNumbers);
+
+    const sortNums = (arr, direction) => {
+        if (direction == 'ascending') {
+            return arr.sort((a,b) => a - b) ;
+        } else if (direction == 'descending') {
+            return arr.sort((a,b) => b - a);
+        } else {
+            return "Невірне напрям сортування.";
+        }
+    };
+
+    console.log(sortNums(numbers, 'ascending'));
+    console.log(sortNums(numbers, 'descending'));
+
+    // - є масив
+    // let coursesAndDurationArray = [
+    //     {title: 'JavaScript Complex', monthDuration: 5},
+    //     {title: 'Java Complex', monthDuration: 6},
+    //     {title: 'Python Complex', monthDuration: 6},
+    //     {title: 'QA Complex', monthDuration: 4},
+    //     {title: 'FullStack', monthDuration: 7},
+    //     {title: 'Frontend', monthDuration: 4}
+    // ];
+    // -- відсортувати його за спаданням за monthDuration
+    // -- відфільтрувати , залишивши тільки курси з тривалістю більше 5 місяців
+    // -- за допомоги map перетворити кожен елемент на наступний тип {id,title,monthDuration}
+
+    let coursesAndDurationArray = [
+        {title: 'JavaScript Complex',   monthDuration: 5},
+        {title: 'Java Complex',         monthDuration: 6},
+        {title: 'Python Complex',       monthDuration: 6},
+        {title: 'QA Complex',           monthDuration: 4},
+        {title: 'FullStack',            monthDuration: 7},
+        {title: 'Frontend',             monthDuration: 4}
+    ];
+
+    // -- відсортувати його за спаданням за monthDuration
+    let sortedByDurationDescending = coursesAndDurationArray.sort((a, b) => b.monthDuration - a.monthDuration);
+    console.log('Відсортовано за спаданням за тривалістю:', sortedByDurationDescending);
+
+    // -- відфільтрувати , залишивши тільки курси з тривалістю більше 5 місяців
+    let coursesMoreThan5Months = coursesAndDurationArray.filter(course => course.monthDuration > 5);
+    console.log('Курси з тривалістю більше 5 місяців:', coursesMoreThan5Months);
+
+    // -- за допомоги map перетворити кожен елемент на наступний тип {id,title,monthDuration}
+    let transformedCourses = coursesAndDurationArray.map(
+        (course, index) =>
+            ({
+                id:             index + 1,
+                title:          course.title,
+                monthDuration:  course.monthDuration
+            })
+    );
+    console.log('Трансформовані курси:', transformedCourses);
+
+</script>
+
+</body>
+</html>
