@@ -81,8 +81,6 @@
             return arr.sort((a,b) => a - b) ;
         } else if (direction == 'descending') {
             return arr.sort((a,b) => b - a);
-        } else {
-            return "Невірне напрям сортування.";
         }
     };
 
@@ -129,6 +127,62 @@
             })
     );
     console.log('Трансформовані курси:', transformedCourses);
+
+    // описати колоду карт (від 6 до туза без джокерів)
+    // - знайти піковий туз
+    // - всі шістки
+    // - всі червоні карти
+    // - всі буби
+    // - всі трефи від 9 та більше
+    //
+    // {
+    //     cardSuit: '', // 'spade', 'diamond','heart', 'clubs'
+    //         value: '', // '6'-'10', 'ace','jack','queen','king','joker'
+    //     color:'', // 'red','black'
+    // }
+
+
+    let deck = [];
+
+    const suits = ['spade', 'diamond', 'heart', 'clubs'];
+    const values = ['6', '7', '8', '9', '10', 'jack', 'queen', 'king', 'ace'];
+
+    for (const suit of suits) {
+        for (const value of values) {
+            const color = (suit == 'heart' || suit == 'diamond') ? 'red' : 'black';
+            deck.push({ cardSuit: suit, value: value, color: color });
+        }
+    }
+
+    // - знайти піковий туз
+    const aceOfSpades = deck.find(card => card.cardSuit == 'spade' && card.value == 'ace');
+    console.log('Піковий туз:', aceOfSpades);
+
+    // - всі шістки
+    const sixes = deck.filter(card => card.value == '6');
+    console.log('Всі шістки:', sixes);
+
+    // - всі червоні карти
+    const redCards = deck.filter(card => card.color == 'red');
+    console.log('Всі червоні карти:', redCards);
+
+    // - всі буби
+    const diamonds = deck.filter(card => card.cardSuit == 'diamond');
+    console.log('Всі буби:', diamonds);
+
+    // - всі трефи від 9 та більше
+    let arrValues = ['9', '10', 'jack', 'queen', 'king', 'ace'];
+    const highValueClubs = deck.filter(card => card.cardSuit == 'clubs' && arrValues.includes(card.value));
+    console.log('Всі трефи від 9 та більше:', highValueClubs);
+
+
+
+    // console.log(deck);
+
+
+
+
+
 
 </script>
 
