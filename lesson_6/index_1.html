@@ -175,12 +175,27 @@
     const highValueClubs = deck.filter(card => card.cardSuit == 'clubs' && arrValues.includes(card.value));
     console.log('Всі трефи від 9 та більше:', highValueClubs);
 
+    console.log(deck);
 
+    // Взяти описану колоду карт, та за допомоги reduce упакувати всі карти по "мастях" в об'єкт
+    // {
+    //     spades:[],
+    //     diamonds:[],
+    //     hearts:[],
+    //     clubs:[]
+    // }
 
-    // console.log(deck);
+    const packedDeck = deck.reduce((acc, card) => {
+        acc[card.cardSuit].push(card);
+        return acc;
+    }, {
+        spade:  [],
+        diamond:[],
+        heart:  [],
+        clubs:  []
+    });
 
-
-
+    console.log(packedDeck);
 
 
 
