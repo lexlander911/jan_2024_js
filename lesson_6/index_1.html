@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<script>
+<script src="js/arrays.js">
 
     let string1 = 'hello world';
     let string2 = 'lorem ipsum';
@@ -196,6 +196,16 @@
     });
 
     console.log(packedDeck);
+
+    // взяти з arrays.js (який лежить в папці 2023 plan) масив coursesArray
+
+    // --написати пошук всіх об'єктів, в який в modules є sass
+    const coursesWithSass = coursesArray.filter(course => course.modules.includes('sass'));
+    console.log('Курси з sass:', coursesWithSass);
+
+    // --написати пошук всіх об'єктів, в який в modules є docker
+    const coursesWithDocker = coursesArray.filter(course => course.modules.includes('docker'));
+    console.log('Курси з docker:', coursesWithDocker);
 
 </script>
 
